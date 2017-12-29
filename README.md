@@ -4,7 +4,7 @@
 Invoking the YOLO executable, no concurrency yet.
 
 ### Docker file
-The darknet code compiles find on my Macbook, 
+The darknet code compiles fine on my Macbook, 
 but a fix (adding an import statement) is needed for the linux alpine 
 distribution.
 
