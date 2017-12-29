@@ -34,8 +34,8 @@ distribution.
     CMD sbt run
 
 ### Build and run the container
-    docker build -t yolo:latest .
-    docker run --rm -it -p 9000:9000 yolo:latest
+    docker build -t yolo-akka:latest .
+    docker run --rm -it -p 9000:9000 yolo-akka:latest
 
 ### Test in the browser
     http://localhost:9000/test
@@ -43,8 +43,13 @@ distribution.
 ### Use your own image
     curl --form "image=@person.jpg" http://localhost:9000/predict > result.png
 
-### Run in Kubernetes
+### Run container in Kubernetes
     kubectl create -f kubernetes/yolo-akka-pod.yml
     kubectl expose pod yolo-akka --port=9000 --name=frontend
     kubectl port-forward yolo-akka 9000
     kubectl attach yolo-akka -i
+    
+### Run service in Kubernetes
+    kubectl create -f kubernetes/yolo-akka-service.yml
+    kubectl describe service yolo-akka-service
+    minikube service yolo-akka-service --url
