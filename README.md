@@ -1,6 +1,6 @@
 ## Akka Http wrapper for the YOLO algorithm
 ![ ](./images/person_pred.png)
-#
+### Docker file
     #FROM alpine:3.4
     FROM innoq/docker-alpine-java8
     
@@ -26,12 +26,12 @@
     WORKDIR "yolo-akka"
     CMD sbt run
 
-#
+### Build and run the container
     docker build -t yolo:latest .
     docker run --rm -it -p 9000:9000 yolo:latest
 
-#
+### Test in the browser
     http://localhost:9000/test
 
-#
+### Use your own image
     curl --form "image=@person.jpg" http://localhost:9000/predict > result.png
