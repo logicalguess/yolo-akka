@@ -1,5 +1,8 @@
 ## Akka Http wrapper for the YOLO algorithm
 ![ ](./images/person_pred.png)
+
+Invoking the YOLO executable, no concurrency yet.
+
 ### Docker file
     #FROM alpine:3.4
     FROM innoq/docker-alpine-java8
