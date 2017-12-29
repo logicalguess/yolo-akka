@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: yolo-akka
+  labels:
+    app: yolo-akka
+spec:
+  containers:
+  - name: yolo-akka
+    image: logicalguess/yolo-akka:0.1
+    ports:
+    - name: akka-port
+      containerPort: 9000

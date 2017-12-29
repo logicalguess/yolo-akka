@@ -42,3 +42,9 @@ distribution.
 
 ### Use your own image
     curl --form "image=@person.jpg" http://localhost:9000/predict > result.png
+
+### Run in Kubernetes
+    kubectl create -f kubernetes/yolo-akka-pod.yml
+    kubectl expose pod yolo-akka --port=9000 --name=frontend
+    kubectl port-forward yolo-akka 9000
+    kubectl attach yolo-akka -i
