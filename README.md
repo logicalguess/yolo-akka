@@ -52,4 +52,6 @@ distribution.
 ### Run service in Kubernetes
     kubectl create -f kubernetes/yolo-akka-service.yml
     kubectl describe service yolo-akka-service
+    kubectl run -i --tty busybox --image=busybox --restart=Never -- sh
+    
     minikube service yolo-akka-service --url
