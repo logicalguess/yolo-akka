@@ -1,6 +1,8 @@
 ## Akka Http wrapper for the YOLO algorithm
 ![ ](./images/person_pred.png)
 
+![ ](./images/cnn_pred.png)
+
 Invoking the YOLO executable, no concurrency yet.
 
 ### Docker file
