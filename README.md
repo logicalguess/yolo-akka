@@ -49,10 +49,11 @@ distribution.
     kubectl run yolo-akka --image=logicalguess/yolo-akka:latest --port=9000 
     kubectl get pods
     kubectl get deployments
+    
     kubectl expose deployment yolo-akka --type=NodePort // --port=9000
     kubectl get services
    
-   
+### Run container in Kubernetes with kubectl   
     kubectl create -f kubernetes/yolo-akka-pod.yml
     kubectl expose pod yolo-akka --port=9000
     
@@ -62,12 +63,14 @@ distribution.
     
     kubectl exec -it yolo-akka -- /bin/bash
     
-### Run service in Kubernetes with config
+### Run service in Kubernetes
     kubectl create -f kubernetes/yolo-akka-service.yml
     kubectl describe service yolo-akka-service
-    kubectl run -i --tty busybox --image=busybox --restart=Never -- sh
     
     minikube service yolo-akka-service --url
+    
+    kubectl run -i --tty busybox --image=busybox --restart=Never -- sh
+    kubectl label pods yolo-akka-5f4949b5b8-p5gs7 app=yolo-akka
     
  ## Kops
     kops delete cluster --name kubernetes.reactivepatterns.com --state=s3://kops-state-g73md6wj --yes

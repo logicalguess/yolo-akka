@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: yolo-akka
+  labels:
+    app: yolo-akka
+spec:
+  containers:
+  - name: yolo-akka
+    image: yolo-akka:latest
+    imagePullPolicy: IfNotPresent
+    ports:
+    - name: akka-port
+      containerPort: 9000
