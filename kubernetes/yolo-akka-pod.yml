@@ -7,7 +7,7 @@ metadata:
 spec:
   containers:
   - name: yolo-akka
-    image: logicalguess/yolo-akka:0.1
+    image: logicalguess/yolo-akka:latest
     ports:
     - name: akka-port
       containerPort: 9000

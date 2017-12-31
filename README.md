@@ -45,15 +45,36 @@ distribution.
 ### Use your own image
     curl --form "image=@person.jpg" http://localhost:9000/predict > result.png
 
-### Run container in Kubernetes
+### Run container in Kubernetes with kubectl
+    kubectl run yolo-akka --image=logicalguess/yolo-akka:latest --port=9000 
+    kubectl get pods
+    kubectl get deployments
+    kubectl expose deployment yolo-akka --type=NodePort // --port=9000
+    kubectl get services
+   
+   
     kubectl create -f kubernetes/yolo-akka-pod.yml
-    kubectl expose pod yolo-akka --port=9000 --name=frontend
+    kubectl expose pod yolo-akka --port=9000
+    
     kubectl port-forward yolo-akka 9000
     kubectl attach yolo-akka -i
+    http://127.0.0.1:9000/test
     
-### Run service in Kubernetes
+    kubectl exec -it yolo-akka -- /bin/bash
+    
+### Run service in Kubernetes with config
     kubectl create -f kubernetes/yolo-akka-service.yml
     kubectl describe service yolo-akka-service
     kubectl run -i --tty busybox --image=busybox --restart=Never -- sh
     
     minikube service yolo-akka-service --url
+    
+ ## Kops
+    kops delete cluster --name kubernetes.reactivepatterns.com --state=s3://kops-state-g73md6wj --yes
+
+    kops create cluster --name=kubernetes.reactivepatterns.com --state=s3://kops-state-g73md6wj --zones=us-east-2a --node-count=2 --node-size=t2.small --master-size=t2.small --dns-zone=kubernetes.reactivepatterns.com
+    kops update cluster kubernetes.reactivepatterns.com --yes --state=s3://kops-state-g73md6wj
+    kubectl get nodes
+ 
+    
+    
